@@ -1,0 +1,33 @@
+{
+  "name": "ng-qiniu-uploader",
+  "version": "0.0.1",
+  "authors": [
+    "yinchangsheng <ychangsheng@gmail.com>"
+  ],
+  "description": "angular uploader plupload of qiniu",
+  "main": "angular-dz-image-uploader.coffee",
+  "moduleType": [
+    "amd",
+    "es6"
+  ],
+  "keywords": [
+    "angular",
+    "uploader",
+    "qiniu"
+  ],
+  "license": "MIT",
+  "homepage": "http://github.com/YinChangSheng/ng-qiniu-uploader",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.1",
+    "angularjs": "~1.2.23",
+    "bootstrap": "~3.2.0"
+  }
+}

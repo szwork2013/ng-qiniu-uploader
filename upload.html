@@ -1,0 +1,40 @@
+<html>
+  <head>
+    <title></title>
+    <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
+    <script src="vendor/jquery/dist/jquery.js"></script>
+    <link rel="stylesheet" href="build/style.css"/>
+    <script src="vendor/angularjs/angular.min.js"></script>
+    <script src="build/ng-qiniu-uploader.min.js"></script>
+  </head>
+  <body ng-app="app">
+    <div class="container" ng-controller="ctrl1">
+        {{ images }}
+        <div dz-large-uploader ng-model="images" namespace="media/images/fuwu/article/" options="largeUploadOpt"></div>
+    </div>
+    <script>
+
+        angular.module('app', ['dz.uiimageuploader']).controller('ctrl1', ['$scope', 'uploadConfig', function($scope, uploadConfig){
+            $scope.images = [];
+        }])
+        .value('uploadConfig', {
+            uptokenUrl: '/uptoken'  //获取文件上传令牌
+            , domain:'http://dongzone-test1.qiniudn.com' //获取图片更换
+            , limitSize: '2mb' //文件最大尺寸
+            , thumbHeight: 400 //缩略图自大高度
+            , thumbWidth: 800 //缩略图最大宽度
+            , limitCount: 2 //上传数量限制
+            , keyRule: function(namespace){ //文件最终民称生成规则
+                return function(up, file){
+                    return namespace + file.id + '.' + Date.now() + '.' + file.type.replace('image/', '');
+                }
+            }
+        })
+        .run(['$rootScope', 'uploadConfig', function($rootScope, uploadConfig){
+            $rootScope.largeUploadOpt = uploadConfig;
+        }])
+        ;
+
+    </script>
+  </body>
+</html>

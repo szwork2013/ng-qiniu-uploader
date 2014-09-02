@@ -1,0 +1,30 @@
+<div class="well" id="UploadContainer">
+    <div class="alert alert-info"><b>温馨提示：</b>选择图片后并执行 "开始上传" ，才能使上传生效</div>
+    <div class="row">
+        <div class="col-xs-6 col-md-3 image" ng-repeat="image in images">
+            <a ng-show="image.removebtn" class="btn btn-sm btn-danger image-item-remove-btn" title="删除该图片" href="javascript:void(0);" ng-click="remove($index)"><span class="glyphicon glyphicon-remove"></span></a>
+            <a href="#" class="thumbnail">
+                <img ng-src="{{ image.src }}" width="{{ image.width }}" height="{{ image.height }}" >
+            </a>
+        </div>
+        <div class="col-xs-6 col-md-3">
+            <div class="file-select">
+                <a id="FileSelectBtn" class="file-select-btn" href="javascript:void(0);">点击选择图片</a>
+                <input type="file" accept="{{ accept }}" name="uploadfile" multiple style="display: none;" />
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-10">
+            <div class="progress" style="height: 45px;">
+                <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">
+                    <span class="present-text">{{ present }}% 已经完成, 已经上传：{{ uploadSize }}, 上传速度: {{ speed }}/s</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-2">
+            <button class="btn btn-lg btn-primary upload-btn" ng-disabled="!startUploadBtn"><span class="glyphicon glyphicon-upload"></span> {{ startUploadBtnText }}</button>
+        </div>
+    </div>
+</div>
